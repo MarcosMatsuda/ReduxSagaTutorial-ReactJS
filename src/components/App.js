@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+
+import {connect} from 'react-redux';
+import {getUsersRequest} from '../actions/users';
+
+
 import './App.css';
 
 // function* testing(){
@@ -11,6 +16,11 @@ import './App.css';
 // }
 
 class App extends Component() {
+  constructor(props){
+    super(props); 
+
+    this.props.getUsersRequest();
+  }
   render(){
     // const iterator = testing(); 
     // console.log(iterator.next());
@@ -25,4 +35,6 @@ class App extends Component() {
   }
 }
 
-export default App;
+export default connect(null, {
+  getUsersRequest
+})(App);
