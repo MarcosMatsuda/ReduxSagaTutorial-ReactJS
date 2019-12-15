@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 
 import {connect} from 'react-redux';
-import {getUsersRequest} from '../actions/users';
+import {getUsersRequest, createUserRequest} from '../actions/users';
 import UsersList  from './UsersList';
 
 import './App.css';
@@ -16,7 +16,10 @@ class App extends Component() {
   }
   
   handleSubmit = ({firstName, lastName}) => {
-
+    this.props.createUserRequest({
+      firstName,
+      lastName
+    });
   };
 
   render(){
@@ -32,5 +35,6 @@ class App extends Component() {
 }
 
 export default connect(({users}) => ({users}), {
-  getUsersRequest
+  getUsersRequest,
+  createUserRequest
 })(App);
