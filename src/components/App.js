@@ -3,7 +3,7 @@ import logo from './logo.svg';
 
 import {connect} from 'react-redux';
 import {getUsersRequest} from '../actions/users';
-
+import UsersList  from './UsersList';
 
 import './App.css';
 
@@ -27,14 +27,15 @@ class App extends Component() {
     // console.log(iterator.next());
     // console.log(iterator.next());
     // console.log(iterator.next());
+    const users = this.props.users;
     return (
-      <div>
-        test
+      <div style={{margin: '0 auto', padding: '20px', maxWidth: '600px'}}>
+        <UsersList users={users.items} />
       </div>
     );
   }
 }
 
-export default connect(null, {
+export default connect(({users}) => ({users}), {
   getUsersRequest
 })(App);
